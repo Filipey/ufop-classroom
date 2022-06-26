@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { format, isPast } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { CheckCircle, Lock } from 'phosphor-react';
@@ -27,11 +28,17 @@ export function Lesson(props: LessosProps) {
       </span>
 
       <div 
-      className={`rounded border border-gray-500 p-4 mt-2 group-hover:border-green-500 ${isActiveLesson} ? bg-green-500`}
+      className={classNames('rounded border border-gray-500 p-4 mt-2 group-hover:border-white', {
+        'bg-red-800': isActiveLesson
+      })}
       >
         <header className="flex items-center justify-between">
           {isLessonAvailable ? (
-            <span className={`text-sm text-blue-500 font-medium flex items-center gap-2 ${isActiveLesson} ? text-white`}>
+            <span className={classNames('text-sm font-medium flex items-center gap-2' ,{
+              'text-white': isActiveLesson,
+              'text-red-700': !isActiveLesson
+
+            })}>
               <CheckCircle size={20} />
               Conteúdo liberado
             </span>
@@ -42,12 +49,18 @@ export function Lesson(props: LessosProps) {
           </span>
           )}
 
-          <span className={`text-xs rounded py-[0.125rem] px-2 text-white border border-green-300 font-bold ${isActiveLesson} ? border-white`}>
+          <span className={classNames('text-xs rounded py-[0.125rem] px-2 text-white border font-bold', {
+            'border-white': isActiveLesson,
+            'border-red-800': !isActiveLesson
+          })}>
             {props.type === 'live' ? 'AO VIVO' : 'AULA GRAVADA'}
           </span>
         </header>
 
-        <strong className={`text-gray-200 mt-5 block ${isActiveLesson} ? text-white`}>
+        <strong className={classNames('mt-5 block', {
+          'text-white': isActiveLesson,
+          'text-gray-300': !isActiveLesson
+        })}>
           {props.title}
         </strong>
       </div>
