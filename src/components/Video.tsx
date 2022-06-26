@@ -2,7 +2,7 @@ import { DefaultUi, Player, Youtube } from '@vime/react';
 import { CaretRight, FileArrowDown, GoogleChromeLogo, Lightning } from 'phosphor-react';
 
 import '@vime/core/themes/default.css';
-import { useGetLessonBySlugQuery } from '../graphql/generated';
+import { useGetLessonBySlugQuery } from '../graphql/types';
 
 interface VideoProps {
   lessonSlug: string;
